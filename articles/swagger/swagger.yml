@@ -1,0 +1,237 @@
+swagger: "2.0"
+info:
+  title: beego Test API
+  description: beego has a very cool tools to autogenerate documents for your API
+  version: 1.0.0
+  termsOfService: http://beego.me/
+  contact:
+    email: astaxie@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: renren-fast/app
+paths:
+  /curriculum/searchByPage:
+    post:
+      tags:
+      - curriculum
+      description: create TbCurriculum
+      operationId: TbCurriculumController.SearchByPage
+      parameters:
+      - in: body
+        name: body
+        description: body for SearchForm content
+        required: true
+        schema:
+          $ref: '#/definitions/utils.SearchForm'
+      responses:
+        "201":
+          description: '{int} utils.Resp'
+        "403":
+          description: body is empty
+  /curriculum/searchHot:
+    get:
+      tags:
+      - curriculum
+      description: create TbCurriculum
+      operationId: TbCurriculumController.GetHot
+      parameters:
+      - in: body
+        name: body
+        description: body for TbCurriculum content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TbCurriculum'
+      responses:
+        "201":
+          description: '{int} models.TbCurriculum'
+        "403":
+          description: body is empty
+  /curriculum/searchRefined:
+    get:
+      tags:
+      - curriculum
+      description: create TbCurriculum
+      operationId: TbCurriculumController.GetRefined
+      parameters:
+      - in: body
+        name: body
+        description: body for TbCurriculum content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TbCurriculum'
+      responses:
+        "201":
+          description: '{int} models.TbCurriculum'
+        "403":
+          description: body is empty
+  /curriculum/searchtTop:
+    get:
+      tags:
+      - curriculum
+      description: create TbCurriculum
+      operationId: TbCurriculumController.GetTop
+      parameters:
+      - in: body
+        name: body
+        description: body for TbCurriculum content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TbCurriculum'
+      responses:
+        "201":
+          description: '{int} models.TbCurriculum'
+        "403":
+          description: body is empty
+  /user/login:
+    post:
+      tags:
+      - user
+      description: create TbUser
+      operationId: TbUserController.Login
+      parameters:
+      - in: body
+        name: body
+        description: body for TbUser content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TbUser'
+      responses:
+        "201":
+          description: '{int} models.TbUser'
+        "403":
+          description: body is empty
+definitions:
+  models.TbCurriculum:
+    title: TbCurriculum
+    type: object
+    properties:
+      banner:
+        description: 条幅地址
+        type: string
+      create_time:
+        description: 创建时间
+        type: string
+        format: datetime
+      current_price:
+        description: 当前售价
+        type: number
+        format: double
+      difficulty:
+        description: 难度等级
+        type: string
+      document_num:
+        description: 文档数量
+        type: integer
+        format: int32
+      id:
+        type: integer
+        format: int64
+      learning_cycle:
+        description: 学习周期
+        type: string
+      price:
+        description: 售价
+        type: number
+        format: double
+      state:
+        description: 状态
+        type: string
+      suggestion:
+        description: 推荐介绍
+        type: string
+      tag:
+        description: 标签
+        type: string
+      title:
+        description: 课程标题
+        type: string
+      top:
+        description: 是否置顶
+        type: integer
+        format: int32
+      type_id:
+        description: 类型ID
+        type: integer
+        format: int32
+      video_num:
+        description: 视频数量
+        type: integer
+        format: int32
+  models.TbUser:
+    title: TbUser
+    type: object
+    properties:
+      CreateTime:
+        description: 创建时间
+        type: string
+        format: datetime
+      Curriculum:
+        description: 已购课程数量
+        type: integer
+        format: int32
+      Id:
+        type: integer
+        format: int64
+      Minute:
+        description: 学习时长
+        type: integer
+        format: int32
+      Mobile:
+        description: 手机号
+        type: string
+      NickName:
+        description: 昵称
+        type: string
+      OpenId:
+        description: open_id
+        type: string
+      Password:
+        description: 密码
+        type: string
+      Photo:
+        description: 头像URL
+        type: string
+      Username:
+        description: 用户名
+        type: string
+  utils.SearchForm:
+    title: SearchForm
+    type: object
+tags:
+- name: curriculum
+  description: |
+    TbCurriculumController operations for TbCurriculum
+- name: curriculum_comment
+  description: |
+    TbCurriculumCommentController operations for TbCurriculumComment
+- name: curriculum_document
+  description: |
+    TbCurriculumDocumentController operations for TbCurriculumDocument
+- name: curriculum_index
+  description: |
+    TbCurriculumIndexController operations for TbCurriculumIndex
+- name: curriculum_sales
+  description: |
+    TbCurriculumSalesController operations for TbCurriculumSales
+- name: curriculum_teacher
+  description: |
+    TbCurriculumTeacherController operations for TbCurriculumTeacher
+- name: curriculum_type
+  description: |
+    TbCurriculumTypeController operations for TbCurriculumType
+- name: learning
+  description: |
+    TbLearningController operations for TbLearning
+- name: order
+  description: |
+    TbOrderController operations for TbOrder
+- name: order_temp
+  description: |
+    TbOrderTempController operations for TbOrderTemp
+- name: teacher
+  description: |
+    TbTeacherController operations for TbTeacher
+- name: user
+  description: |
+    TbUserController operations for TbUser
