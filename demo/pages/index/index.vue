@@ -3,7 +3,7 @@
 		<view class="search-container">
 			<image src="../../static/img/logo-small.jpg" mode="widthFix"class="logo"></image>
 			<view class="serach-bar">
-				<icon type="search" size="16" class="search-icon" ></icon>
+				<icon type="search" size="16" class="search-icon" @tap="toCurriculumList()"></icon>
 				<input type="text" placeholder="请输入关键字" class="serach" v-model="keyword"
 							confirm-type="search" @confirm="toCurriculumList()"/>		
 			</view>
@@ -11,11 +11,11 @@
 		</view>
 		
 		<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" class="swiper-container">
-			<swiper-item v-for="one in topList" :key="one.id">
+			<swiper-item v-for="one in topList" :key="one.id" @tap="toCurriculum(one.id)">
 				<image :src="one.banner" mode="widthFix" class="swiper-image"></image>
 			</swiper-item>
 		</swiper>
-		<view class="hot-container">
+		<view class="hot-container" @tap="toCurriculum(hot.id)">
 			<view class="title">热门课程</view>
 			<view class="hot-content">
 				<view class="info">
@@ -48,7 +48,7 @@
 			</view>
 			<view class="tab-page-container">
 				<view :class="page_1">
-					<view class="refined-content" v-for="one in list_1" :key="one">
+					<view class="refined-content" v-for="one in list_1" :key="one" @tap="toCurriculum(one.id)">
 						<view class="info">
 							<view class="curriculum-name">
 								{{one.name}}
@@ -68,7 +68,7 @@
 					<button class="btn" @tap="toAllList('入门')">全部课程</button>
 				</view>
 				<view :class="page_2">
-					<view class="refined-content" v-for="one in list_2" :key="one">
+					<view class="refined-content" v-for="one in list_2" :key="one" @tap="toCurriculum(one.id)">
 						<view class="info">
 							<view class="curriculum-name">
 								{{one.name}}
@@ -88,7 +88,7 @@
 					<button class="btn" @tap="toAllList('简单')">全部课程</button>
 				</view>
 				<view :class="page_3">
-					<view class="refined-content" v-for="one in list_3" :key="one">
+					<view class="refined-content" v-for="one in list_3" :key="one" @tap="toCurriculum(one.id)">
 						<view class="info">
 							<view class="curriculum-name">
 								{{one.name}}
@@ -168,6 +168,11 @@
 				let that = this
 				uni.navigateTo({
 					url:'../curriculum_list/curriculum_list?keyword='+that.keyword
+				})
+			},
+			toCurriculum:function(id) {
+				uni.navigateTo({
+					url:"../curriculum/curriculum?id="+id
 				})
 			}
 		},

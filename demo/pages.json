@@ -22,6 +22,14 @@
             "path" : "pages/curriculum_list/curriculum_list",
             "style" : {}
         }
+        ,{
+            "path" : "pages/curriculum/curriculum",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/comment/comment",
+            "style" : {}
+        }
     ],
 	"tabBar":{
 		"color":"#515151",

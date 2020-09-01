@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view class="curriculum-content" v-for="one in list" :key="one">
+		<view class="curriculum-content" v-for="one in list" :key="one" @tap="toCurriculum(one.id)">
 			<view class="info">
 				<view class="curriculum-name">
 					{{one.name}}
@@ -66,6 +66,11 @@
 							title:"加载了"+list.length+"条记录"
 						})
 					}
+				})
+			},
+			toCurriculum:function(id) {
+				uni.navigateTo({
+					url:"../curriculum/curriculum?id="+id
 				})
 			}
 		},
